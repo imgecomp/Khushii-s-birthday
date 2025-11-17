@@ -81,14 +81,19 @@
       color:rgba(255,255,255,0.8);
     }
 
-    /* STACKED CARDS GALLERY */
-    .stack-wrapper{
+    /* container for radios + stack */
+    .stack-area{
       position:relative;
-      width:260px;height:320px;
+      width:240px;
+      height:290px;
       margin-top:14px;
     }
 
-    /* radio buttons to control which card is active */
+    .stack-wrapper{
+      position:absolute;
+      inset:0;
+    }
+
     .stack-toggle{display:none;}
 
     .photo-card{
@@ -99,12 +104,12 @@
       box-shadow:0 18px 36px rgba(0,0,0,0.9);
       padding:10px;
       display:flex;align-items:center;justify-content:center;
-      transform-origin:center bottom;
-      transition:transform .45s ease,opacity .45s ease;
+      transform-origin:center center;
+      transition:transform .55s cubic-bezier(.19,.69,.26,1),
+                 opacity  .55s cubic-bezier(.19,.69,.26,1);
       cursor:pointer;
     }
 
-    /* card images – replace src with your pics */
     .photo-inner{
       width:100%;height:100%;
       border-radius:20px;
@@ -125,42 +130,40 @@
       mix-blend-mode:screen;
     }
 
-    /* stack positions (default state – all visible, like cards) */
+    /* tighter stacked positions like a deck */
     .card1{transform:translateY(0) scale(1);z-index:4;}
-    .card2{transform:translateY(14px) scale(.97);z-index:3;opacity:.92;}
-    .card3{transform:translateY(28px) scale(.94);z-index:2;opacity:.86;}
-    .card4{transform:translateY(42px) scale(.91);z-index:1;opacity:.8;}
+    .card2{transform:translateY(6px) scale(.985);z-index:3;opacity:.97;}
+    .card3{transform:translateY(12px) scale(.97);z-index:2;opacity:.93;}
+    .card4{transform:translateY(18px) scale(.955);z-index:1;opacity:.9;}
 
-    /* when user clicks a card: we actually check its radio.
-       rule: the checked one slides slightly down + fades,
-       next one moves to top of stack. */
+    /* swipe out to left with fade */
     #c1:checked ~ .stack-wrapper .card1{
-      transform:translateY(120%) scale(.95);
+      transform:translateX(-140%) rotate(-4deg);
       opacity:0;
     }
     #c1:checked ~ .stack-wrapper .card2{
       transform:translateY(0) scale(1);z-index:4;opacity:1;
     }
     #c1:checked ~ .stack-wrapper .card3{
-      transform:translateY(14px) scale(.97);z-index:3;opacity:.92;
+      transform:translateY(6px) scale(.985);z-index:3;opacity:.97;
     }
     #c1:checked ~ .stack-wrapper .card4{
-      transform:translateY(28px) scale(.94);z-index:2;opacity:.86;
+      transform:translateY(12px) scale(.97);z-index:2;opacity:.93;
     }
 
     #c2:checked ~ .stack-wrapper .card2{
-      transform:translateY(120%) scale(.95);
+      transform:translateX(-140%) rotate(-4deg);
       opacity:0;
     }
     #c2:checked ~ .stack-wrapper .card3{
       transform:translateY(0) scale(1);z-index:4;opacity:1;
     }
     #c2:checked ~ .stack-wrapper .card4{
-      transform:translateY(14px) scale(.97);z-index:3;opacity:.92;
+      transform:translateY(6px) scale(.985);z-index:3;opacity:.97;
     }
 
     #c3:checked ~ .stack-wrapper .card3{
-      transform:translateY(120%) scale(.95);
+      transform:translateX(-140%) rotate(-4deg);
       opacity:0;
     }
     #c3:checked ~ .stack-wrapper .card4{
@@ -168,11 +171,10 @@
     }
 
     #c4:checked ~ .stack-wrapper .card4{
-      transform:translateY(120%) scale(.95);
+      transform:translateX(-140%) rotate(-4deg);
       opacity:0;
     }
 
-    /* neon button at bottom */
     .btn{
       margin-top:28px;margin-bottom:20px;
       padding:12px 40px;border-radius:999px;border:none;
@@ -203,12 +205,6 @@
   </style>
 </head>
 <body>
-  <!-- radios controlling which card gets “removed” next -->
-  <input type="radio" name="card" id="c1" class="stack-toggle" />
-  <input type="radio" name="card" id="c2" class="stack-toggle" />
-  <input type="radio" name="card" id="c3" class="stack-toggle" />
-  <input type="radio" name="card" id="c4" class="stack-toggle" />
-
   <div class="frame">
     <div class="decor">
       <div class="flags">
@@ -223,40 +219,42 @@
     </div>
 
     <h2>Some Sweet Moments</h2>
-    <p class="sub">(Tap the cards one by one)</p>
+    <p class="sub">(Swipe the cards)</p>
 
-    <div class="stack-wrapper">
-      <!-- card 1 (top) -->
-      <label for="c1" class="photo-card card1">
-        <div class="photo-inner">
-          <!-- replace src with your image -->
-          <img src="images/moment1.jpg" alt="Our sweet moment 1" />
-        </div>
-      </label>
+    <div class="stack-area">
+      <!-- radios controlling which card gets “removed” next -->
+      <input type="radio" name="card" id="c1" class="stack-toggle" />
+      <input type="radio" name="card" id="c2" class="stack-toggle" />
+      <input type="radio" name="card" id="c3" class="stack-toggle" />
+      <input type="radio" name="card" id="c4" class="stack-toggle" />
 
-      <!-- card 2 -->
-      <label for="c2" class="photo-card card2">
-        <div class="photo-inner">
-          <img src="images/moment2.jpg" alt="Our sweet moment 2" />
-        </div>
-      </label>
+      <div class="stack-wrapper">
+        <label for="c1" class="photo-card card1">
+          <div class="photo-inner">
+            <img src="images/moment1.jpg" alt="Our sweet moment 1" />
+          </div>
+        </label>
 
-      <!-- card 3 -->
-      <label for="c3" class="photo-card card3">
-        <div class="photo-inner">
-          <img src="images/moment3.jpg" alt="Our sweet moment 3" />
-        </div>
-      </label>
+        <label for="c2" class="photo-card card2">
+          <div class="photo-inner">
+            <img src="images/moment2.jpg" alt="Our sweet moment 2" />
+          </div>
+        </label>
 
-      <!-- card 4 -->
-      <label for="c4" class="photo-card card4">
-        <div class="photo-inner">
-          <img src="images/moment4.jpg" alt="Our sweet moment 4" />
-        </div>
-      </label>
+        <label for="c3" class="photo-card card3">
+          <div class="photo-inner">
+            <img src="images/moment3.jpg" alt="Our sweet moment 3" />
+          </div>
+        </label>
+
+        <label for="c4" class="photo-card card4">
+          <div class="photo-inner">
+            <img src="images/moment4.jpg" alt="Our sweet moment 4" />
+          </div>
+        </label>
+      </div>
     </div>
 
-    <!-- this button can go to your final message page later -->
     <a href="message.html" class="btn">
       💌 Open My Message
     </a>
