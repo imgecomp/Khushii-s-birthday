@@ -31,36 +31,6 @@
       box-shadow:0 30px 60px rgba(0,0,0,0.85),0 0 0 1px rgba(255,255,255,0.14);
       backdrop-filter:blur(18px);
       display:flex;flex-direction:column;align-items:center;text-align:center;
-<div class="bottom-note">step 3 • secret message</div>
-    <div class="final-msg">You are my sunshine 💖</div>
-
-    <!-- new button to go to memories page -->
-    <a href="moments.html"
-       style="
-         margin-top:14px;
-         padding:10px 34px;
-         border-radius:999px;
-         border:none;
-         background-image:linear-gradient(135deg,#ff3ba5,#ff6bd9);
-         color:#fff;
-         font-size:13px;
-         font-weight:600;
-         letter-spacing:0.14em;
-         text-transform:uppercase;
-         box-shadow:0 0 18px rgba(255,59,165,0.9),0 12px 22px rgba(0,0,0,0.9);
-         text-decoration:none;
-         display:inline-flex;
-         align-items:center;
-         gap:6px;
-      ">
-      📸 See our moments
-    </a>
-  </div>
-</body>
-</html>
-
-
-Add button in this-- inside .frame at the bottom, replace the last lines with this:
     }
 
     .decor{
@@ -132,7 +102,6 @@ Add button in this-- inside .frame at the bottom, replace the last lines with th
       50%{transform:translateY(-18px);}
     }
 
-    /* word behind the balloon */
     .hidden-word{
       position:absolute;
       font-family:"Pacifico",cursive;
@@ -149,7 +118,6 @@ Add button in this-- inside .frame at the bottom, replace the last lines with th
     .w3{right:18px;bottom:62px;}
     .w4{left:122px;bottom:30px;}
 
-    /* when balloon “popped” (checkbox checked) */
     #pop1:checked + label.b1{
       transform:scale(.2) translateY(-20px);
       opacity:0;
@@ -183,6 +151,24 @@ Add button in this-- inside .frame at the bottom, replace the last lines with th
       font-family:"Pacifico",cursive;
       font-size:22px;margin-top:6px;color:#ffeaa7;
     }
+
+    .moments-btn{
+      margin-top:14px;
+      padding:10px 34px;
+      border-radius:999px;
+      border:none;
+      background-image:linear-gradient(135deg,#ff3ba5,#ff6bd9);
+      color:#fff;
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      box-shadow:0 0 18px rgba(255,59,165,0.9),0 12px 22px rgba(0,0,0,0.9);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
   </style>
 </head>
 <body>
@@ -200,24 +186,18 @@ Add button in this-- inside .frame at the bottom, replace the last lines with th
 
     <div class="balloon-area">
       <div class="balloons">
-
-        <!-- balloon 1 -->
         <input type="checkbox" id="pop1" />
         <label for="pop1" class="balloon-label b1"></label>
 
-        <!-- balloon 2 -->
         <input type="checkbox" id="pop2" />
         <label for="pop2" class="balloon-label b2"></label>
 
-        <!-- balloon 3 -->
         <input type="checkbox" id="pop3" />
         <label for="pop3" class="balloon-label b3"></label>
 
-        <!-- balloon 4 -->
         <input type="checkbox" id="pop4" />
         <label for="pop4" class="balloon-label b4"></label>
 
-        <!-- words revealed after pop -->
         <div class="hidden-word w1">You</div>
         <div class="hidden-word w2">are</div>
         <div class="hidden-word w3">my</div>
@@ -227,6 +207,11 @@ Add button in this-- inside .frame at the bottom, replace the last lines with th
 
     <div class="bottom-note">step 3 • secret message</div>
     <div class="final-msg">You are my favourite person.</div>
+
+    <!-- new button to go to memories page -->
+    <a href="moments.html" class="moments-btn">
+      📸 See our moments
+    </a>
   </div>
 </body>
 </html>
