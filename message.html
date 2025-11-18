@@ -53,6 +53,7 @@
     .flag:nth-child(4){background:#55efc4;}
     .flag:nth-child(5){background:#fd79a8;}
 
+    /* small sparkling lights in garland */
     .spark{
       position:absolute;width:6px;height:6px;border-radius:50%;
       background:radial-gradient(circle,#fff,#ffeaa7 40%,transparent 70%);
@@ -84,10 +85,12 @@
       pointer-events:none;
     }
 
+    /* slightly larger card so your image fits nicely */
     .card-wrapper{
       margin-top:18px;
       perspective:1600px;
-      width:260px;height:280px;
+      width:290px;   /* increased from 260px */
+      height:310px;  /* increased from 280px */
     }
 
     .card-book{
@@ -126,7 +129,7 @@
       color:#4a235a;
     }
 
-    /* left cover – new style with image */
+    /* left cover – whole thing is clickable */
     .card-left{
       position:absolute;inset:0;
       transform-origin:left center;
@@ -166,34 +169,36 @@
       display:block;
     }
 
+    /* title badge – smaller & more transparent so image is visible */
     .cover-tag{
       position:absolute;
-      left:50%;top:16px;
+      left:50%;top:12px;
       transform:translateX(-50%);
-      padding:6px 14px;
+      padding:4px 10px;
       border-radius:999px;
-      background:rgba(0,0,0,0.6);
+      background:rgba(0,0,0,0.45);
       color:#ffffff;
-      font-size:11px;
+      font-size:9px;
       line-height:1.4;
       text-align:center;
       letter-spacing:.08em;
       text-transform:uppercase;
-      box-shadow:0 0 12px rgba(0,0,0,0.6);
+      box-shadow:0 0 8px rgba(0,0,0,0.5);
     }
 
+    /* subtle “Tap to open” hint */
     .cover-open-hint{
       position:absolute;
-      left:50%;bottom:14px;
+      left:50%;bottom:10px;
       transform:translateX(-50%);
-      padding:6px 18px;
+      padding:4px 16px;
       border-radius:999px;
-      background:linear-gradient(135deg,#ff3ba5,#ff6bd9);
+      background:rgba(0,0,0,0.4);
       color:#fff;
-      font-size:11px;
-      letter-spacing:.14em;
+      font-size:9px;
+      letter-spacing:.12em;
       text-transform:uppercase;
-      box-shadow:0 0 16px rgba(255,59,165,0.9);
+      box-shadow:0 0 10px rgba(0,0,0,0.6);
     }
 
     /* open animation */
@@ -287,7 +292,7 @@
         <label class="card-left" for="open-toggle">
           <div class="cover-inner">
             <div class="cover-frame">
-              <!-- CHANGE THIS PATH TO YOUR COVER IMAGE -->
+              <!-- put your image file here -->
               <img src="Group.jpg" alt="Birthday cover" class="cover-img" />
 
               <div class="cover-tag">
@@ -303,9 +308,8 @@
       </div>
     </div>
 
-    <p class="tap-hint">(Tap the card to gently open it)</p>
+    <p class="tap-hint">(Tap anywhere on the card cover to open)</p>
 
-    <!-- next button – you can change the link -->
     <a href="final.html" class="btn-next">
       Next ➜
     </a>
