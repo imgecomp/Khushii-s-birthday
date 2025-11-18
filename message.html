@@ -85,12 +85,12 @@
       pointer-events:none;
     }
 
-    /* slightly larger card so your image fits nicely */
+    /* slightly larger card so image fits nicely */
     .card-wrapper{
       margin-top:18px;
       perspective:1600px;
-      width:290px;   /* increased from 260px */
-      height:310px;  /* increased from 280px */
+      width:290px;
+      height:310px;
     }
 
     .card-book{
@@ -105,6 +105,179 @@
       background:radial-gradient(circle at top,#2d0037,#100017);
       border-radius:24px;
       box-shadow:0 18px 34px rgba(0,0,0,0.9),
+                 0 0 0 2px rgba(255,255,255,0.16);
+      display:flex;align-items:center;justify-content:center;
+      padding:16px;
+    }
+    .page-inner{
+      width:100%;height:100%;
+      border-radius:18px;
+      background:linear-gradient(135deg,#ffffff,#ffe6ff);
+      box-shadow:inset 0 0 18px rgba(0,0,0,0.16);
+      padding:14px 16px;
+      text-align:left;
+      overflow:hidden;
+    }
+    .page-inner h3{
+      font-size:16px;
+      color:#c2185b;
+      margin-bottom:8px;
+    }
+    .page-inner p{
+      font-size:13px;
+      line-height:1.7;
+      color:#4a235a;
+    }
+
+    /* left cover – whole cover clickable */
+    .card-left{
+      position:absolute;inset:0;
+      transform-origin:left center;
+      transform:rotateY(0deg);
+      border-radius:24px;
+      background:linear-gradient(135deg,#ff6bd9,#ff3ba5);
+      box-shadow:0 18px 36px rgba(0,0,0,0.95),
+                 0 0 0 2px rgba(255,255,255,0.18);
+      padding:8px;
+      display:flex;align-items:center;justify-content:center;
+      transition:transform 1.2s cubic-bezier(.25,.8,.25,1);
+      backface-visibility:hidden;
+      cursor:pointer;
+    }
+
+    .cover-inner{
+      width:100%;height:100%;
+      border-radius:20px;
+      background:radial-gradient(circle at top,#ffb8ff,#b00063);
+      box-shadow:inset 0 0 24px rgba(0,0,0,0.35);
+      padding:6px;
+      display:flex;align-items:center;justify-content:center;
+    }
+
+    .cover-frame{
+      width:100%;height:100%;
+      border-radius:18px;
+      background:#ffffff;
+      box-shadow:0 0 18px rgba(255,255,255,0.6);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cover-img{
+      width:100%;height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* open animation */
+    #open-toggle:checked ~ .frame .card-left{
+      transform:rotateY(-155deg);
+    }
+
+    .tap-hint{
+      font-size:12px;
+      color:var(--text-soft);
+      margin-top:10px;
+    }
+
+    .btn-next{
+      margin-top:26px;
+      padding:11px 38px;
+      border-radius:999px;
+      border:none;
+      background-image:linear-gradient(135deg,#ff3ba5,#ff6bd9);
+      color:#fff;
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      box-shadow:0 0 20px rgba(255,59,165,0.9),0 14px 24px rgba(0,0,0,0.9);
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      position:relative;
+      overflow:hidden;
+    }
+    .btn-next::before{
+      content:"";position:absolute;inset:0;border-radius:inherit;
+      background:linear-gradient(120deg,rgba(255,255,255,0.7),transparent 60%);
+      mix-blend-mode:screen;opacity:.6;
+      transform:translateX(-120%);animation:shine 3s ease-in-out infinite;
+    }
+    @keyframes shine{
+      0%{transform:translateX(-120%);}
+      40%{transform:translateX(120%);}
+      100%{transform:translateX(120%);}
+    }
+
+    .bottom-note{
+      position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+      font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+      color:rgba(255,255,255,0.45);
+    }
+  </style>
+</head>
+<body>
+  <!-- checkbox controlling card open -->
+  <input type="checkbox" id="open-toggle" />
+
+  <div class="frame">
+    <div class="decor">
+      <div class="flags">
+        <div class="flag"></div><div class="flag"></div>
+        <div class="flag"></div><div class="flag"></div>
+        <div class="flag"></div>
+
+        <div class="spark s1"></div><div class="spark s2"></div>
+        <div class="spark s3"></div><div class="spark s4"></div>
+        <div class="spark s5"></div>
+      </div>
+    </div>
+
+    <h2>A Special Message</h2>
+
+    <div class="card-wrapper">
+      <div class="card-book">
+        <!-- inner right page -->
+        <div class="card-right">
+          <div class="page-inner">
+            <h3>Happy Birthday, Cutiepie!</h3>
+            <p>
+              You deserve all the happiness, love and laughter in the world,
+              today and always. You make every little moment brighter just by
+              being in it, with your smile, your chaos and your pure heart.
+              Thank you for being the one person who can make even an ordinary
+              day feel like fireworks and fairy lights. May your year be filled
+              with soft hugs, loud laughs, midnight talks and all the magic you
+              always give to everyone else. 💗
+            </p>
+          </div>
+        </div>
+
+        <!-- front cover with only the image -->
+        <label class="card-left" for="open-toggle">
+          <div class="cover-inner">
+            <div class="cover-frame">
+              <!-- put your cover photo here -->
+              <img src="Group.jpg" alt="Birthday cover" class="cover-img" />
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <p class="tap-hint">(Tap anywhere on the card cover to open)</p>
+
+    <a href="final.html" class="btn-next">
+      Next ➜
+    </a>
+
+    <div class="bottom-note">step 5 • special message</div>
+  </div>
+</body>
+</html>      box-shadow:0 18px 34px rgba(0,0,0,0.9),
                  0 0 0 2px rgba(255,255,255,0.16);
       display:flex;align-items:center;justify-content:center;
       padding:16px;
